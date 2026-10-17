@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "schema": "https://efirio.dev/schema/theme-package.schema.json",
+  "schema_version": "1.0.0",
+  "metadata": {
+    "name": "EFIRIO Paper",
+    "id": "efirio-paper",
+    "author": "EFIRIO",
+    "version": "0.1.0",
+    "tags": ["minimal", "paper", "grid", "typography", "reference"],
+    "min_os": {
+      "android": "android14",
+      "ios": "ios17"
+    }
+  },
+  "palette": {
+    "scheme": "paper",
+    "colors": {
+      "bg": "#0d0d0d",
+      "on_bg": "#f5f5f0",
+      "surface": "#1a1a1a",
+      "accent": "#d4af37"
+    }
+  },
+  "typography": {
+    "font_family": "Paper-Sans",
+    "sizes": {
+      "display": "3.5rem",
+      "heading": "1.75rem",
+      "body": "1rem",
+      "caption": "0.85rem"
+    }
+  },
+  "wallpapers": {
+    "items": [
+      {
+        "name": "Paper Grid",
+        "id": "efirio-paper-grid",
+        "format": "webp",
+        "variants": [
+          { "path": "placeholders/wallpapers/README.md", "w": 1080, "h": 2340 },
+          { "path": "placeholders/wallpapers/README.md", "w": 1170, "h": 2534 }
+        ]
+      }
+    ]
+  },
+  "icons": {
+    "items": [
+      { "name": "Paper Base", "id": "icon-grid", "format": "svg", "path": "icons/grid.svg" }
+    ]
+  },
+  "widgets": {
+    "items": [
+      {
+        "name": "Paper Clock",
+        "id": "widget-clock",
+        "kind": "clock",
+        "sizes": [
+          { "family": "small", "w": 145, "h": 145 },
+          { "family": "medium", "w": 220, "h": 165 },
+          { "family": "large", "w": 420, "h": 180 }
+        ]
+      }
+    ]
+  },
+  "layouts": {
+    "items": [
+      { "name": "Minimal", "id": "layout-minimal", "mode": "minimal" },
+      { "name": "Grid", "id": "layout-grid", "mode": "grid" }
+    ]
+  },
+  "capabilities": {
+    "android": {
+      "wallpaper": "supported",
+      "icons": "supported",
+      "widgets": "supported",
+      "lockscreen": "supported",
+      "standby": "unsupported",
+      "focus": "unknown"
+    },
+    "ios": {
+      "wallpaper": "unsupported",
+      "icons": "unknown",
+      "widgets": "supported",
+      "lockscreen": "supported",
+      "standby": "supported",
+      "focus": "unknown"
+    }
+  }
+}

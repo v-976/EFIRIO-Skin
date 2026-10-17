@@ -1,0 +1,66 @@
+{
+  "$schema": "https://efirio.dev/schema/capabilities.registry.schema.json",
+  "$id": "https://efirio.dev/schema/capabilities.registry.schema.json",
+  "title": "EFIRIO Capability Registry",
+  "description": "Canonical list of platform capabilities. Known capabilities are boolean maps in each package's capabilities.<platform>. New keys go here first. Unknown / not-yet-defined capabilities MUST be recorded with their status rather than asserted as supported.",
+  "type": "object",
+  "required": ["known", "known_status", "unknown"],
+  "additionalProperties": false,
+  "properties": {
+    "known": {
+      "type": "array",
+      "description": "Capabilities that are defined and recognized by EFIRIO.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category", "description", "defined"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "type": "string", "enum": ["wallpaper", "icons", "widgets", "lockscreen", "standby", "focus", "other"] },
+          "description": { "type": "string" },
+          "defined": { "type": "boolean", "description": "true when a runner implementation / format is defined; false when still to be built." }
+        }
+      }
+    },
+    "known_status": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "platforms"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["platform", "status"],
+              "properties": {
+                "platform": { "type": "string", "enum": ["android", "ios"] },
+                "status": { "type": "string", "enum": ["supported", "unsupported", "unknown"] }
+              }
+            }
+          }
+        }
+      }
+    },
+    "unknown": {
+      "type": "array",
+      "description": "Capability names discovered from platform docs or collection intent but not yet defined in EFIRIO.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "source", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "source": { "type": "string", "description": "Where the capability was observed (e.g. Apple docs, collection intent)." },
+          "status": { "type": "string", "enum": ["unknown"] }
+        }
+      }
+    }
+  }
+}

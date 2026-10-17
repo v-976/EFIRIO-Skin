@@ -1,0 +1,112 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-10-16",
+  "known": [
+    {
+      "id": "wallpaper",
+      "name": "Dynamic wallpaper",
+      "category": "wallpaper",
+      "description": "Replace the device wallpaper with a theme-supplied image (Android) or installable live photo / wallpaper asset (iOS).",
+      "defined": false
+    },
+    {
+      "id": "icons",
+      "name": "Custom icons",
+      "category": "icons",
+      "description": "Provide an icon set for the user's launcher (Android) or custom-icon mechanism (iOS).",
+      "defined": false
+    },
+    {
+      "id": "widgets",
+      "name": "Widgets",
+      "category": "widgets",
+      "description": "Installable home/lock-screen widget packs rendered by the platform's widget framework.",
+      "defined": false
+    },
+    {
+      "id": "lockscreen",
+      "name": "Lock screen",
+      "category": "lockscreen",
+      "description": "Theming of the lock screen (widgets, clock face, palette).",
+      "defined": false
+    },
+    {
+      "id": "standby",
+      "name": "StandBy",
+      "category": "standby",
+      "description": "Theming of the idle/StandBy screen shown when the device is charging and unlocked.",
+      "defined": false
+    },
+    {
+      "id": "focus",
+      "name": "Focus",
+      "category": "focus",
+      "description": "Theming driven by the platform Focus mode (notifications, sound, appearance).",
+      "defined": false
+    }
+  ],
+  "known_status": [
+    {
+      "id": "wallpaper",
+      "name": "Dynamic wallpaper",
+      "platforms": [
+        { "platform": "android", "status": "supported" },
+        { "platform": "ios", "status": "unsupported" }
+      ]
+    },
+    {
+      "id": "icons",
+      "name": "Custom icons",
+      "platforms": [
+        { "platform": "android", "status": "supported" },
+        { "platform": "ios", "status": "unknown" }
+      ]
+    },
+    {
+      "id": "widgets",
+      "name": "Widgets",
+      "platforms": [
+        { "platform": "android", "status": "supported" },
+        { "platform": "ios", "status": "supported" }
+      ]
+    },
+    {
+      "id": "lockscreen",
+      "name": "Lock screen",
+      "platforms": [
+        { "platform": "android", "status": "supported" },
+        { "platform": "ios", "status": "supported" }
+      ]
+    },
+    {
+      "id": "standby",
+      "name": "StandBy",
+      "platforms": [
+        { "platform": "android", "status": "unsupported" },
+        { "platform": "ios", "status": "supported" }
+      ]
+    },
+    {
+      "id": "focus",
+      "name": "Focus",
+      "platforms": [
+        { "platform": "android", "status": "unknown" },
+        { "platform": "ios", "status": "unknown" }
+      ]
+    }
+  ],
+  "unknown": [
+    {
+      "id": "ios-app-store-icons",
+      "name": "App Store custom app icons",
+      "source": "iOS platform constraint: no public API to change app icons; requires App Store distribution and review.",
+      "status": "unknown"
+    },
+    {
+      "id": "android-lockscreen-wallpaper",
+      "name": "Android system lock-screen wallpaper",
+      "source": "Android lock screen is a launcher/OS surface without a public wallpaper API; theming depends on the launcher.",
+      "status": "unknown"
+    }
+  ]
+}

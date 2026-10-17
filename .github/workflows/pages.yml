@@ -1,0 +1,53 @@
+name: Publish EFIRIO Skin PWA
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Assemble static publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site/collections/efirio-paper/icons
+          mkdir -p _site/collections/efirio-paper/placeholders/wallpapers
+          mkdir -p _site/collections/efirio-signature
+          cp index.html app.js styles.css manifest.webmanifest sw.js _site/
+          cp collections/efirio-paper/package.json _site/collections/efirio-paper/
+          cp collections/efirio-paper/placeholders/icons/grid.svg _site/collections/efirio-paper/icons/
+          cp collections/efirio-paper/placeholders/wallpapers/README.md _site/collections/efirio-paper/placeholders/wallpapers/
+          cp collections/efirio-signature/package.json _site/collections/efirio-signature/
+          touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,250 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://efirio.dev/schema/theme-package.schema.json",
+  "title": "EFIRIO Theme Package",
+  "description": "Portable, platform-agnostic theme package for EFIRIO Skin. Both the iOS and Android runners read this exact shape and apply only the capabilities they support.",
+  "type": "object",
+  "required": ["version", "schema", "schema_version", "metadata", "palette", "typography", "wallpapers", "icons", "widgets", "layouts", "capabilities"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "format": "uri",
+      "description": "Stable URI identifying the Theme Package schema."
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Version of the Theme Package schema used by this package.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "version": {
+      "type": "string",
+      "description": "Schema version the runner reads. Bump when the shape changes so old runners can detect incompatibility.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "metadata": { "$ref": "#/definitions/metadata" },
+    "palette": { "$ref": "#/definitions/palette" },
+    "typography": { "$ref": "#/definitions/typography" },
+    "wallpapers": { "$ref": "#/definitions/wallpapers" },
+    "icons": { "$ref": "#/definitions/icons" },
+    "widgets": { "$ref": "#/definitions/widgets" },
+    "layouts": { "$ref": "#/definitions/layouts" },
+    "capabilities": { "$ref": "#/definitions/capabilities" }
+  },
+  "definitions": {
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "id", "author", "version", "tags", "min_os"],
+      "properties": {
+        "name": { "type": "string", "description": "Human-readable collection name." },
+        "id": { "type": "string", "description": "Stable, unique package identifier (e.g. efirio-paper)." },
+        "author": { "type": "string", "description": "Author / source of the collection." },
+        "version": { "type": "string", "description": "Collection version, semver." },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "Curated tags for discovery." },
+        "min_os": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["android", "ios"],
+          "properties": {
+            "android": { "type": "string", "description": "Minimum Android version, e.g. android14." },
+            "ios": { "type": "string", "description": "Minimum iOS version, e.g. ios17." }
+          }
+        }
+      }
+    },
+    "palette": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scheme", "colors"],
+      "properties": {
+        "scheme": {
+          "type": "string",
+          "description": "Palette scheme used by runners.",
+          "enum": ["material", "paper", "custom"]
+        },
+        "colors": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["bg", "on_bg", "surface", "accent"],
+          "properties": {
+            "bg": { "type": "string", "description": "Background color token (hex, e.g. #111111)." },
+            "on_bg": { "type": "string", "description": "Text-on-bg color token." },
+            "surface": { "type": "string", "description": "Surface color token." },
+            "accent": { "type": "string", "description": "Accent color token." }
+          }
+        },
+        "gradient": {
+          "type": "array",
+          "description": "Optional ordered brand gradient stops.",
+          "items": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+          "minItems": 2
+        }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["font_family", "sizes"],
+      "properties": {
+        "font_family": { "type": "string", "description": "Primary font family identifier." },
+        "sizes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["display", "heading", "body", "caption"],
+          "properties": {
+            "display": { "type": "string" },
+            "heading": { "type": "string" },
+            "body": { "type": "string" },
+            "caption": { "type": "string" }
+          }
+        }
+      }
+    },
+    "wallpapers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items"],
+      "properties": {
+        "items": {
+          "type": "array",
+          "description": "Wallpaper assets.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "id", "format", "variants"],
+            "properties": {
+              "name": { "type": "string" },
+              "id": { "type": "string" },
+              "format": {
+                "type": "string",
+                "description": "Image format.",
+                "enum": ["webp", "jpg", "png", "heic", "live"]
+              },
+              "variants": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["path", "w", "h"],
+                  "properties": {
+                    "path": { "type": "string", "description": "Relative path to the asset file." },
+                    "w": { "type": "integer", "description": "Width in pixels." },
+                    "h": { "type": "integer", "description": "Height in pixels." }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "icons": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items"],
+      "description": "Icon set distributed via launcher / icon pack on Android; via custom-icons on iOS.",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "id", "format", "path"],
+            "properties": {
+              "name": { "type": "string" },
+              "id": { "type": "string" },
+              "format": {
+                "type": "string",
+                "enum": ["png", "svg"]
+              },
+              "path": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "widgets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items"],
+      "description": "Widget definitions. Concrete platform rendering is a runner concern.",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "id", "kind", "sizes"],
+            "properties": {
+              "name": { "type": "string" },
+              "id": { "type": "string" },
+              "kind": { "type": "string", "description": "Widget kind, e.g. clock, weather, quote." },
+              "sizes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["family", "w", "h"],
+                  "properties": {
+                    "family": { "type": "string", "enum": ["small", "medium", "large"] },
+                    "w": { "type": "integer" },
+                    "h": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "layouts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items"],
+      "description": "Reusable layout templates describing arrangement of content.",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "id", "mode"],
+            "properties": {
+              "name": { "type": "string" },
+              "id": { "type": "string" },
+              "mode": {
+                "type": "string",
+                "description": "Layout mode, e.g. minimal, grid, hero."
+              }
+            }
+          }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["android", "ios"],
+      "description": "Per-platform support for each capability. A capability that is optional or not yet defined MUST be marked explicitly as unsupported/unknown rather than asserted as supported.",
+      "properties": {
+        "android": { "$ref": "#/definitions/capabilities_map" },
+        "ios": { "$ref": "#/definitions/capabilities_map" }
+      }
+    },
+    "capabilities_map": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["wallpaper", "icons", "widgets", "lockscreen", "standby", "focus"],
+      "description": "Per-platform status for each known capability. Values express support reality, not assumption: 'supported' (platform provides this capability), 'unsupported' (platform cannot provide it), 'unknown' (capability not yet defined in EFIRIO). New capability keys go into capabilities.registry.json first.",
+      "properties": {
+        "wallpaper": { "type": "string", "enum": ["supported", "unsupported", "unknown"] },
+        "icons": { "type": "string", "enum": ["supported", "unsupported", "unknown"] },
+        "widgets": { "type": "string", "enum": ["supported", "unsupported", "unknown"] },
+        "lockscreen": { "type": "string", "enum": ["supported", "unsupported", "unknown"] },
+        "standby": { "type": "string", "enum": ["supported", "unsupported", "unknown"] },
+        "focus": { "type": "string", "enum": ["supported", "unsupported", "unknown"] }
+      }
+    }
+  }
+}
