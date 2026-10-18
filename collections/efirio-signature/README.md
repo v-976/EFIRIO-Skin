@@ -1,5 +1,6 @@
 # EFIRIO Signature
 
 Approved brand palette and gradient order: Cyan → Blue → Purple → Magenta.
-No wallpapers, icons, widgets, or layout artwork are included yet; the PWA
-reports those resources as unavailable rather than inventing assets.
+This collection includes original portrait and landscape wallpaper masters in
+SVG plus same-dimension PNG exports for practical device saving. No icons,
+widgets, or layouts are included; the PWA reports those resources explicitly.

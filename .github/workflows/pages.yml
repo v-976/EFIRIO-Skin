@@ -29,11 +29,13 @@ jobs:
           mkdir -p _site/collections/efirio-paper/icons
           mkdir -p _site/collections/efirio-paper/placeholders/wallpapers
           mkdir -p _site/collections/efirio-signature
+          mkdir -p _site/collections/efirio-signature/assets
           cp index.html app.js styles.css manifest.webmanifest sw.js _site/
           cp collections/efirio-paper/package.json _site/collections/efirio-paper/
           cp collections/efirio-paper/placeholders/icons/grid.svg _site/collections/efirio-paper/icons/
           cp collections/efirio-paper/placeholders/wallpapers/README.md _site/collections/efirio-paper/placeholders/wallpapers/
           cp collections/efirio-signature/package.json _site/collections/efirio-signature/
+          cp collections/efirio-signature/assets/*.svg collections/efirio-signature/assets/*.png _site/collections/efirio-signature/assets/
           touch _site/.nojekyll
 
       - name: Upload Pages artifact

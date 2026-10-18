@@ -1,4 +1,4 @@
-const CACHE = 'efirio-alpha-0-2-0';
+const CACHE = 'efirio-alpha-0-3-0';
 const APP_SHELL = [
   './',
   './index.html',
@@ -8,7 +8,13 @@ const APP_SHELL = [
   './collections/efirio-paper/package.json',
   './collections/efirio-paper/icons/grid.svg',
   './collections/efirio-paper/placeholders/wallpapers/README.md',
-  './collections/efirio-signature/package.json'
+  './collections/efirio-signature/package.json',
+  './collections/efirio-signature/assets/wallpaper-portrait.svg',
+  './collections/efirio-signature/assets/wallpaper-landscape.svg',
+  './collections/efirio-signature/assets/collection-cover.svg',
+  './collections/efirio-signature/assets/preview.svg'
+  ,'./collections/efirio-signature/assets/wallpaper-portrait.png'
+  ,'./collections/efirio-signature/assets/wallpaper-landscape.png'
 ];
 
 self.addEventListener('install', event => {

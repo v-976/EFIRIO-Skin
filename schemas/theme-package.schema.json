@@ -42,6 +42,7 @@
         "author": { "type": "string", "description": "Author / source of the collection." },
         "version": { "type": "string", "description": "Collection version, semver." },
         "tags": { "type": "array", "items": { "type": "string" }, "description": "Curated tags for discovery." },
+        "description": { "type": "string", "description": "Human-readable collection description." },
         "min_os": {
           "type": "object",
           "additionalProperties": false,
@@ -119,8 +120,9 @@
               "format": {
                 "type": "string",
                 "description": "Image format.",
-                "enum": ["webp", "jpg", "png", "heic", "live"]
+                "enum": ["webp", "jpg", "png", "svg", "heic", "live"]
               },
+              "preview": { "type": "string", "description": "Optional relative path to a preview asset." },
               "variants": {
                 "type": "array",
                 "items": {

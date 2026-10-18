@@ -2,9 +2,15 @@
   "version": "1.0.0",
   "schema": "https://efirio.dev/schema/theme-package.schema.json",
   "schema_version": "1.0.0",
-  "metadata": { "name": "EFIRIO Signature", "id": "efirio-signature", "author": "EFIRIO", "version": "0.1.0", "tags": ["signature", "brand", "gradient", "foundation"], "min_os": { "android": "android14", "ios": "ios17" } },
+  "metadata": { "name": "EFIRIO Signature", "id": "efirio-signature", "author": "EFIRIO", "version": "0.3.0", "description": "Original geometric wallpapers in the approved EFIRIO Signature gradient.", "tags": ["signature", "brand", "gradient", "geometric", "wallpapers"], "min_os": { "android": "android14", "ios": "ios17" } },
   "palette": { "scheme": "custom", "colors": { "bg": "#071018", "on_bg": "#F4FBFF", "surface": "#101C2A", "accent": "#5E8CFF" }, "gradient": ["#4EEAFF", "#5E8CFF", "#B67CFF", "#FF78DF"] },
   "typography": { "font_family": "Inter, ui-sans-serif, system-ui, sans-serif", "sizes": { "display": "3.5rem", "heading": "1.75rem", "body": "1rem", "caption": "0.85rem" } },
-  "wallpapers": { "items": [] }, "icons": { "items": [] }, "widgets": { "items": [] }, "layouts": { "items": [] },
+  "wallpapers": { "items": [
+    { "name": "Signature Portrait", "id": "signature-portrait", "format": "png", "preview": "assets/preview.svg", "variants": [{ "path": "assets/wallpaper-portrait.png", "w": 1290, "h": 2796 }] },
+    { "name": "Signature Landscape", "id": "signature-landscape", "format": "png", "preview": "assets/preview.svg", "variants": [{ "path": "assets/wallpaper-landscape.png", "w": 2732, "h": 2048 }] }
+  ] },
+  "icons": { "items": [] },
+  "widgets": { "items": [] },
+  "layouts": { "items": [] },
   "capabilities": { "android": { "wallpaper": "unknown", "icons": "unknown", "widgets": "unknown", "lockscreen": "unknown", "standby": "unknown", "focus": "unknown" }, "ios": { "wallpaper": "unknown", "icons": "unknown", "widgets": "unknown", "lockscreen": "unknown", "standby": "unknown", "focus": "unknown" } }
 }

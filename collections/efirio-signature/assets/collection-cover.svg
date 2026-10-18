@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">EFIRIO Signature collection cover</title>
+<desc id="desc">Original EFIRIO Signature cover built from dark geometry and the cyan to magenta brand gradient.</desc>
+<defs><linearGradient id="sig" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4EEAFF"/><stop offset=".34" stop-color="#5E8CFF"/><stop offset=".68" stop-color="#B67CFF"/><stop offset="1" stop-color="#FF78DF"/></linearGradient><radialGradient id="halo"><stop stop-color="#5E8CFF" stop-opacity=".34"/><stop offset="1" stop-color="#071018" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="800" fill="#071018"/><rect width="1200" height="800" fill="url(#halo)"/>
+<path d="M80 660 L360 130 L840 130 L1120 660" fill="none" stroke="url(#sig)" stroke-width="28" opacity=".85"/><path d="M170 660 L430 250 L770 250 L1030 660" fill="none" stroke="#F4FBFF" stroke-opacity=".18" stroke-width="2"/>
+<circle cx="600" cy="400" r="112" fill="none" stroke="url(#sig)" stroke-width="3"/><circle cx="600" cy="400" r="9" fill="#F4FBFF"/><path d="M600 170 V630 M370 400 H830" stroke="#F4FBFF" stroke-opacity=".14"/>
+<text x="600" y="716" text-anchor="middle" fill="#F4FBFF" font-family="Inter,ui-sans-serif,system-ui,sans-serif" font-size="30" letter-spacing="10">EFIRIO SIGNATURE</text>
+</svg>
